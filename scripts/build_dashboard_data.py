@@ -11,8 +11,8 @@ project root. Re-run after a new filing is ingested and every downstream chart/d
 """
 import json, os
 
-SP=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project\data"
-PROJ=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project"
+SP=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"data")
+PROJ=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FYS=list(range(2022,2027))
 qf=json.load(open(SP+r"\hli_qfin.json",encoding="utf-8"))       # $mm, keys "YYYY-Q"
 qs=json.load(open(SP+r"\hli_quarterly.json",encoding="utf-8"))  # $000s segments, keys "FYyyyyQq"

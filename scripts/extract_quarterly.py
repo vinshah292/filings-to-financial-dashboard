@@ -3,7 +3,7 @@ import json, re, io, os, urllib.request, time
 import pandas as pd
 
 UA="fpa-portfolio-research vinshah292@icloud.com"
-SP=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project\data"
+SP=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"data")
 BASE="https://www.sec.gov/Archives/edgar/data/1302215"
 
 # (date, accession) for the 20 earnings 8-Ks

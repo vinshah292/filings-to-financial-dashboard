@@ -1,7 +1,7 @@
 """Extract quarterly (FY22Q1-FY26Q4) financials for every model line from XBRL company facts.
 Flows via YTD-differencing (self-ties to annual); balance sheet via quarter-end instants."""
-import json, datetime as dt
-SP=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project\data"
+import json, os, datetime as dt
+SP=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"data")
 G=json.load(open(SP+r"\hli_facts.json",encoding="utf-8"))["facts"]["us-gaap"]
 FYS=[2022,2023,2024,2025,2026]; QS=[1,2,3,4]
 def days(a,b): return (dt.date.fromisoformat(b)-dt.date.fromisoformat(a)).days

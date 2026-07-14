@@ -13,7 +13,7 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
-PROJ=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project"
+PROJ=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA=os.path.join(PROJ,"data")
 D=json.load(open(os.path.join(PROJ,"dashboard_data.json"),encoding="utf-8"))
 QF=json.load(open(os.path.join(DATA,"hli_qfin.json"),encoding="utf-8"))

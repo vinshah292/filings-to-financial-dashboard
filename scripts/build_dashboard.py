@@ -8,7 +8,7 @@ every value is pulled from dashboard_data.json and formatted in code.
 """
 import json, os, base64
 
-PROJ=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project"
+PROJ=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AS_OF="July 13, 2026"
 D=json.load(open(os.path.join(PROJ,"dashboard_data.json"),encoding="utf-8"))
 FYS=D["meta"]["fys"]; F0,F1=FYS[0],FYS[-1]

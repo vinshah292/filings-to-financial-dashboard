@@ -19,7 +19,7 @@ HL_NAVY="#004878"; HL_BLUE="#00609C"; HL_STEEL="#5490A8"; HL_LT="#A9C7DC"
 GREEN="#3E8E5C"; RED="#A6403A"; HL_GREY="#5A6B72"; INK="#22333B"
 rcParams.update({"font.family":"DejaVu Sans","font.size":11,"text.color":INK,
                  "axes.edgecolor":"#C9D2D8","axes.labelcolor":INK,"xtick.color":INK,"ytick.color":INK})
-PROJ=r"C:\Users\vinsh\OneDrive\Documents\Claude\Projects\Github Finance Outputs\Houlihan Lokey Trend Analysis Project"
+PROJ=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTDIR=os.path.join(PROJ,"charts"); os.makedirs(OUTDIR,exist_ok=True)
 D=json.load(open(os.path.join(PROJ,"dashboard_data.json"),encoding="utf-8"))
 FYS=D["meta"]["fys"]; SEG=D["segment_revenue"]
