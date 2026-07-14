@@ -31,10 +31,10 @@ the numbers stop tying out, so a broken figure can never reach the dashboard.
 
 | # | Output | What it shows |
 |---|--------|---------------|
-| 1 | **KPI Scorecard** | Revenue, operating margin, net income, MDs, revenue/MD, comp ratio — FY2022 → FY2026, with sparklines |
+| 1 | **KPI Scorecard** | Revenue, operating margin, net income, MDs, revenue/MD, comp ratio, FY2022 → FY2026, with sparklines |
 | 2 | **Revenue Bridge** | Where four years of net revenue growth came from, by segment |
 | 3 | **Revenue Mix** | Stacked segment revenue in dollars (CF / FR / FVA) |
-| 4 | **Counter-Cyclical Hedge** | Corporate Finance vs Financial Restructuring, indexed — the restructuring hedge in action |
+| 4 | **Counter-Cyclical Hedge** | Corporate Finance vs Financial Restructuring, indexed, the restructuring hedge in action |
 
 ## Architecture
 
@@ -56,8 +56,8 @@ formulas), and a Quarterly Detail audit trail. Every figure ties to the same ver
 
 ## Verification (tie-outs that must pass before a build ships)
 
-- **Segment revenue sums to total revenue** — every fiscal year, FY2022–FY2026.
-- **Quarterly revenue sums to the reported 10-K annual** — every fiscal year.
+- **Segment revenue sums to total revenue**, every fiscal year, FY2022–FY2026.
+- **Quarterly revenue sums to the reported 10-K annual**, every fiscal year.
 - Headline figures were independently checked against the primary filings (revenue, segment revenue, MD
   headcount, operating margin, net income, comp ratio).
 
@@ -77,7 +77,7 @@ Then open `docs/index.html` (the dashboard) or the Excel workbook.
   ~33%. The restructuring book is what kept the peak-to-trough revenue drop to ~20% instead of collapsing with the
   M&A cycle.
 - **Comp discipline.** The compensation ratio held at ~61.5% of revenue every year.
-- **Honest caveat.** Operating margin and revenue per MD sit below their FY2022 levels — FY2022 was a GCA-boosted
+- **Honest caveat.** Operating margin and revenue per MD sit below their FY2022 levels. FY2022 was a GCA-boosted
   M&A boom, and HL kept adding Managing Directors (289 → 354) through the downturn. Record revenue, but on a larger,
   lower-productivity base than the peak.
 

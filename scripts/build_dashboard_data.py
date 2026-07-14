@@ -1,10 +1,10 @@
 """
-build_dashboard_data.py — the single verified data layer for the HLI trend dashboard.
+build_dashboard_data.py, the single verified data layer for the HLI trend dashboard.
 
 Source of truth: SEC. Financial lines come from XBRL company facts (hli_qfin.json, itself
 YTD-differenced and tied to reported annuals). Segment revenue / MD headcount / deal counts
 come from the 20 earnings-release 8-Ks (hli_quarterly.json). Every KPI is computed here in
-Python — the LLM never produces a number. Tie-outs assert before anything is written.
+Python, the LLM never produces a number. Tie-outs assert before anything is written.
 
 Output: dashboard_data.json (annual FY2022-FY2026 series + computed KPIs) next to this script's
 project root. Re-run after a new filing is ingested and every downstream chart/dashboard updates.

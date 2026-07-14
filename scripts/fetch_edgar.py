@@ -1,5 +1,5 @@
 """
-fetch_edgar.py — pull the latest SEC EDGAR data for Houlihan Lokey (CIK 0001302215) into data/.
+fetch_edgar.py, pull the latest SEC EDGAR data for Houlihan Lokey (CIK 0001302215) into data/.
 
 1. Refreshes XBRL company facts (auto-includes any newly reported fiscal period).
 2. Scans the submissions feed for earnings-release 8-Ks (Item 2.02) not yet in
@@ -18,7 +18,7 @@ def get(url):
     req=urllib.request.Request(url,headers={"User-Agent":UA})
     return urllib.request.urlopen(req,timeout=90).read()
 
-# 1) company facts (full XBRL history — new periods appear automatically)
+# 1) company facts (full XBRL history, new periods appear automatically)
 facts=get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{CIK}.json")
 open(os.path.join(DATA,"hli_facts.json"),"wb").write(facts)
 print(f"refreshed data/hli_facts.json ({len(facts)//1024} KB)")
@@ -33,7 +33,7 @@ for form,acc,date,it in zip(rec["form"],rec["accessionNumber"],rec["filingDate"]
     if form=="8-K" and "2.02" in it and acc.replace("-","") not in known:
         new.append((date,acc))
 if new:
-    print("\nNEW earnings 8-K(s) not yet ingested — add these to extract_quarterly.py RELS:")
+    print("\nNEW earnings 8-K(s) not yet ingested, add these to extract_quarterly.py RELS:")
     for d,a in sorted(new,reverse=True): print(f'  ("{d}","{a}"),')
 else:
-    print("ingest list is current — no new earnings 8-Ks since last build")
+    print("ingest list is current, no new earnings 8-Ks since last build")

@@ -1,9 +1,9 @@
 """
-build_dashboard.py — assembles the self-contained HLI trend dashboard (dashboard/index.html).
+build_dashboard.py, assembles the self-contained HLI trend dashboard (dashboard/index.html).
 
 Reads the verified dashboard_data.json + the three rendered PNGs, computes the KPI scorecard
 (card #4) with inline-SVG sparklines, embeds charts as base64 (single portable file, Artifact-ready),
-and writes commentary grounded ONLY in the verified numbers. No number is typed by hand here —
+and writes commentary grounded ONLY in the verified numbers. No number is typed by hand here,
 every value is pulled from dashboard_data.json and formatted in code.
 """
 import json, os, base64
@@ -82,12 +82,12 @@ SECTIONS=[
    f"Corporate Finance added {money(seg['CF'][s(F1)]-seg['CF'][s(F0)])}M, Financial Restructuring {money(seg['FR'][s(F1)]-seg['FR'][s(F0)])}M, and FVA {money(seg['FVA'][s(F1)]-seg['FVA'][s(F0)])}M.",
    f"The bridge is a net view. The path was not a straight line: revenue fell to {money(trough)}M in FY{trough_fy} when M&A froze, then recovered to a record in FY{F1}."]),
  ("Revenue Mix","revenue_mix.png",
-  f"One engine, one stabilizer, one steady base",
+  f"Corporate Finance drives the total",
   [f"Corporate Finance is the engine and the swing factor: {money(seg['CF']['2022'])}M → {money(seg['CF']['2024'])}M in the downturn → {money(seg['CF'][s(F1)])}M five-year high in FY{F1}. It drives the shape of the total.",
    f"Financial Restructuring is the stabilizer, peaking at {money(max(seg['FR'].values()))}M as credit stress rose. FVA is the steady base, low-volatility fee events.",
    f"FY{F1} mix: Corporate Finance {mixcf*100:.0f}%, Financial Restructuring {mixfr*100:.0f}%, FVA {mixfva*100:.0f}%."]),
  ("Counter-Cyclical Hedge","countercyclical_hedge.png",
-  f"When one falls, the other rises",
+  f"Restructuring rises as Corporate Finance falls",
   [f"Indexed to FY{F0}=100, the two books move opposite: Corporate Finance fell to {cf_idx24:.0f} by FY2024 while Financial Restructuring climbed to {fr_idx24:.0f}. That is the hedge.",
    f"The lift is lagged. In the FY{trough_fy} trough, Corporate Finance dropped {cf_drop*100:.0f}% but total revenue fell only {peak_drop*100:.0f}%, because Restructuring and FVA held flat, a diversification cushion. Restructuring's own counter-cyclical surge landed the next year, in FY2024.",
    f"Restructuring then peaked in FY2025 as the M&A recovery took hold, and eased as Corporate Finance took back over."]),
@@ -120,7 +120,7 @@ sec_html=f'<div class="tiles">{tiles}</div>'+section_html(SECTIONS[2],3)  # hedg
 
 HTML=f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Houlihan Lokey — Five-Year Operating Trends</title>
+<title>Houlihan Lokey: Five-Year Operating Trends</title>
 <style>
 /* Hallmark · macrostructure: Stat-Led + document · anchor: HL navy · faces: Georgia display + system sans · pre-emit critique: P4 H5 E4 S5 R4 V4 */
  :root{{--navy:#004878;--blue:#00609C;--steel:#5490A8;--lt:#A9C7DC;

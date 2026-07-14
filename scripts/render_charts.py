@@ -1,5 +1,5 @@
 """
-render_charts.py — code-rendered charts, Houlihan Lokey palette, CW-advisor level polish.
+render_charts.py, code-rendered charts, Houlihan Lokey palette, CW-advisor level polish.
 Fully data-driven off dashboard_data.json (the verified SEC layer). Numbers never hand-typed.
 
 Locked style: NO chart title, NO gridlines, NO y-axis title, legend below the x-axis,

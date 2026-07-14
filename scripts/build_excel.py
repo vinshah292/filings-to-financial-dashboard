@@ -1,5 +1,5 @@
 """
-build_excel.py — the auditable Excel hub.
+build_excel.py, the auditable Excel hub.
 
 Reads the verified dashboard_data.json (+ quarterly detail) and writes a clean workbook that ties
 EXACTLY to the web dashboard: same SEC-sourced numbers, same corrected net-income attribution.
@@ -61,8 +61,8 @@ notes=[
  "cells are live Excel formulas (margins, comp ratio, revenue per MD, segment totals) that recompute.",
  "",
  "Tie-outs (enforced in code before this file is written):",
- "   • Segment revenue sums to total revenue — every fiscal year.",
- "   • Quarterly revenue sums to the reported 10-K annual — every fiscal year.",
+ "   • Segment revenue sums to total revenue, every fiscal year.",
+ "   • Quarterly revenue sums to the reported 10-K annual, every fiscal year.",
  "",
  "Net income to HLI = us-gaap:NetIncomeLoss (attributable to parent), not consolidated ProfitLoss.",
  "EBITDA = GAAP operating income + D&A (not HL's non-GAAP Adjusted EBITDA).",
@@ -81,7 +81,7 @@ om.column_dimensions["B"].width=34
 for j in range(len(FYS)): om.column_dimensions[get_column_letter(3+j)].width=12
 FCOL=lambda j:get_column_letter(3+j)  # data columns start at C
 # title + column header
-t=om.cell(row=2,column=2,value="Operating Model  —  $ in millions unless noted"); t.font=f_h1
+t=om.cell(row=2,column=2,value="Operating Model: $ in millions unless noted"); t.font=f_h1
 hr=4
 om.cell(row=hr,column=2,value="Fiscal year (ended Mar 31)").font=f_colh
 om.cell(row=hr,column=2).fill=fill_navy; om.cell(row=hr,column=2).alignment=L
@@ -103,7 +103,7 @@ def dline(key,label,series,fmt="#,##0.0",bold=False,indent=0):
         cc=om.cell(row=row,column=3+j,value=series[s(fy)]); cc.font=f_input; cc.number_format=fmt; cc.alignment=R
     rowmap[key]=row; row+=1
 def fline(key,label,formula_fn,fmt="0.0%",bold=False):
-    """derived — live formula (black)."""
+    """derived, live formula (black)."""
     global row
     c=om.cell(row=row,column=2,value=label); c.font=f_lblb if bold else f_lbl
     for j in range(len(FYS)):
@@ -149,7 +149,7 @@ qd.column_dimensions["A"].width=2
 qd.column_dimensions["B"].width=30
 QCOLS=[f"FY{fy}Q{q}" for fy in FYS for q in (1,2,3,4)]
 for j in range(len(QCOLS)): qd.column_dimensions[get_column_letter(3+j)].width=9.5
-qd.cell(row=2,column=2,value="Quarterly Detail  —  the audit trail (annual columns above sum these)").font=f_h1
+qd.cell(row=2,column=2,value="Quarterly Detail: the audit trail (annual columns above sum these)").font=f_h1
 qd.freeze_panes="C6"
 hr=5
 qd.cell(row=hr,column=2,value="$ in millions / counts").font=f_colh
@@ -181,8 +181,8 @@ qline("Total revenue (XBRL)",qfin("rev"))
 qsec("MANAGING DIRECTORS (period-end)")
 qline("Corporate Finance",segmd("CF"),"#,##0"); qline("Financial Restructuring",segmd("FR"),"#,##0"); qline("Financial & Valuation Advisory",segmd("FVA"),"#,##0")
 qsec("DEALS")
-qline("Corporate Finance — closed transactions",segdl("CF"),"#,##0"); qline("Financial Restructuring — closed transactions",segdl("FR"),"#,##0")
+qline("Corporate Finance, closed transactions",segdl("CF"),"#,##0"); qline("Financial Restructuring, closed transactions",segdl("FR"),"#,##0")
 
 OUT=os.path.join(PROJ,"Houlihan Lokey - Financial Model.xlsx")
 wb.save(OUT)
-print("saved",os.path.basename(OUT),"— tabs:",wb.sheetnames)
+print("saved",os.path.basename(OUT),", tabs:",wb.sheetnames)
