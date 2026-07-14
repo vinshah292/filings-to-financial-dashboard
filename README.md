@@ -1,10 +1,14 @@
-# Houlihan Lokey — Five-Year Operating Trends
+# Filings → Financial Dashboard
 
-A self-updating FP&A dashboard for **Houlihan Lokey (NYSE: HLI)**, built end-to-end from SEC filings.
-Every number is computed in Python and tied out to the filings. AI writes only the commentary — never a number.
+A pipeline that turns **SEC EDGAR filings** into a verified financial dashboard and an auditable Excel model,
+automatically, and re-runnable the moment new earnings drop. Demonstrated here on **Houlihan Lokey (NYSE: HLI)**.
 
-**Data flow:** SEC EDGAR → verified data layer (with tie-outs) → charts → web dashboard. When HL files new
-earnings, one command re-pulls EDGAR and regenerates everything.
+**Live dashboard:** https://vinshah292.github.io/filings-to-financial-dashboard/
+
+Every number is computed in Python and tied out to the filings. AI writes only the commentary, never a number.
+
+**Data flow:** SEC EDGAR → verified data layer (with tie-outs) → charts → web dashboard + Excel. When new
+earnings are filed, one command re-pulls EDGAR and regenerates everything.
 
 ---
 
