@@ -1,0 +1,16 @@
+# Copyrighted source material — read for research, not redistributed
+Houlihan Lokey Board Deck/
+Operating model Example.xlsx
+
+# Superseded builders (kept locally, out of the public repo)
+scripts/_legacy/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+~$*
